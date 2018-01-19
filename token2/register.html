@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67066475-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-67066475-3');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Blockchain based machine learning platform which connects humans and machines to create the most effective and advanced AI on earth.">
+    <meta name="author" content="Alberta.ai Team">
+
+    <meta property="og:url"                content="https://alberta.ai/" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Alberta - The first crowdsourcely tought AI" />
+    <meta property="og:description"        content="Alberta gives the opportunity to every person on earth with smartphone to earn money, and to protect our society from financial risks connected with AI disruption." />
+    <meta property="og:image"              content="https://alberta.ai/img/alberta-fbook.png" />
+
+    <title>Alberta.ai</title>
+
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha256-m/h/cUDAhf6/iBRixTbuc8+Rg2cIETQtPcH9D3p2Kg0=" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha256-PZLhE6wwMbg4AB3d35ZdBF9HD/dI/y4RazA3iRDurss=" crossorigin="anonymous" />
+
+    <link href="css/creative.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.css"></script>
+    <script src="/path/to/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  </head>
+  <body class="background">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top dashboard-navbar" id="mainNav">
+      <a class="navbar-brand" href="#page-top"><img src="img/alberta-logo.png" alt="Alberta.ai" height="22" width=auto ></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="dashboard-content feature-style-5 text-dark">
+      <div class="dashboard-content-padding">
+        <h2 class="section__heading text-center">Sign Up</h2>
+        <hr class="dark">
+        <br>
+
+        <input type="email" class="form-control" id="" placeholder="Email">
+        <input type="text" class="form-control" id="" placeholder="ETH Address">
+        <input type="password" class="form-control" id="" placeholder="Password">
+        <input type="text" class="form-control" id="" placeholder="Invitation Code">
+
+        <div class="btns">
+          <button type="button" class="btn blue-btn full-btn">Sign Up</button>
+        </div>
+      </div>
+    </div>
+
+    <!--<p class="bg-purple">Current count: <span id="count">??</span></p>
+    <button id="getcount">Get current count</button>
+    <button id="increment">Increment count</button>
+    <div id="log"></div>-->
+
+    <script>
+    // Instantiate a slider
+    var mySlider = $("input.slider").slider();
+
+    // Call a method on the slider
+    var value = mySlider.slider('getValue');
+
+    // For non-getter methods, you can chain together commands
+    	mySlider
+    		.slider('setValue', 5)
+    		.slider('setValue', 7);
+
+    //Displaying log
+      function log(message) {
+        $('#log').append($('<p>').text(message));
+        $('#log').scrollTop($('#log').prop('scrollHeight'));
+      }
+
+      //Displaying error
+      function error(message) {
+        $('#log').append($('<p>').addClass('dark-red').text(message));
+        $('#log').scrollTop($('#log').prop('scrollHeight'));
+      }
+
+      function waitForReceipt(hash, cb) {
+        web3.eth.getTransactionReceipt(hash, function (err, receipt) {
+          if (err) {
+            error(err);
+          }
+
+          if (receipt !== null) {
+            // Transaction went through
+            if (cb) {
+              cb(receipt);
+            }
+          } else {
+            // Try again in 1 second
+            window.setTimeout(function () {
+              waitForReceipt(hash, cb);
+            }, 1000);
+          }
+        });
+      }
+
+      var address = "0xf15090c01bec877a122b567e5552504e5fd22b79";
+      var abi = [{"constant":true,"inputs":[],"name":"getCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"increment","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_count","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
+
+      //Checking if MetaMask runs
+      $(function() { // equivalent to $(document).ready(...)
+        var counter;
+
+        $('#getcount').click(function (e) {
+          e.preventDefault();
+
+          log("Calling getCount...");
+
+          counter.getCount.call(function (err, result){
+            if (err) {
+              return error(err);
+            } else {
+              log("getCount call executed successfully.");
+            }
+
+            // The return value is a BigNumber object
+            $('#count').text(result.toString());      });
+        });
+
+        $('#increment').click(function(e) {
+          e.preventDefault();
+
+          if(web3.eth.defaultAccount === undefined) {
+            return error("No accounts found. If you're using MetaMask, " +
+                         "please unlock it first and reload the page.");
+          }
+
+          log("Calling increment...");
+
+          counter.increment.sendTransaction(function (err, hash) {
+            if (err) {
+              return error(err);
+            }
+            waitForReceipt(hash, function () {
+              log("Transaction succeeded.");
+            });
+          });
+        });
+
+        if (typeof(web3) === "undefined") {
+          error("Unable to find web3. " + "Please run MetaMask (or something else that injects web3).");
+        } else {
+          log("Found injected web3.");
+          web3 = new Web3(window.web3.currentProvider);
+          //Checking if user is connected to Robsten Network
+          if (web3.version.network != 3) {
+            error("Wrong network detected. Please switch to the Ropsten test network.");
+          } else {
+            log("Connected to the Ropsten test network.");
+            counter = web3.eth.contract(abi).at(address);
+            $('#getcount').click();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
